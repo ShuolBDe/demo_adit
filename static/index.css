@@ -1,0 +1,32 @@
+#adit {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+label {
+  width: 150px;
+  height: 150px;
+  background: rgba(167, 0, 255, 0.75);
+  color: #FFF;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 150px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid #CCC;
+}
+
+label:hover {
+  background: rgba(167, 0, 255, 0.9);
+}
+
+#canvas {
+  display: block;
+  border: 1px solid #CCC;
+}
+
+#download {
+  font-size: 18px;
+  display: block;
+}
