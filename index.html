@@ -5,15 +5,19 @@
     <title>ADIT</title>
     <link rel="stylesheet" href="static/index.css">
   </head>
-  <body id="adit">
+  <body class="adit">
     <label for="file">点击这里选取文件</label>
     <input type="file" id="file" hidden>
     <label for="adit">点击这里加图标</label>
     <input type="button" id="adit" hidden>
+    <a href="javascript:;" id="download">点击这里下载</a>
     <label for="upload">点击这里上传</label>
     <input type="button" id="upload" hidden>
+    <div class="setting">
+      <input type="text" id="scale" placeholder="缩放比例 0.00-1.00">
+      <input type="text" id="opacity" placeholder="透明度 0.00-1.00">
+    </div>
     <canvas id="canvas" width="450" height="300"></canvas>
-    <a href="javascript:;" id="download">点击这里下载</a>
     <script type="text/javascript" src="static/adit.js"></script>
     <script type="text/javascript" src="static/index.js"></script>
   </body>

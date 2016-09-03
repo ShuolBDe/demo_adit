@@ -5,6 +5,14 @@ document.querySelector('#file').addEventListener('change', function() {
 });
 
 document.querySelector('#adit').addEventListener('click', function() {
+  var scale = document.getElementById('scale').value,
+    opacity = document.getElementById('opacity').value;
+  if(scale || opacity) {
+    adit.editStyle({
+      adscale: scale,
+      opacity: opacity
+    });
+  }
   adit.adit();
 });
 

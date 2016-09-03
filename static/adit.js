@@ -1,7 +1,7 @@
 !function(globle){
-  const ADSTYLE = {width: 24, height: 24, opacity: 0.8};
+  var STYLE = {adscale: 0.5, imgscale: 1, opacity: 0.65};
   var adImg = new Image();
-  adImg.src = 'static/resource/header.jpg';
+  adImg.src = 'static/resource/ad.jpg';
   function Adit(selector) {
     this.canvas = getCanvas(selector);
     this.ctx = this.canvas.getContext('2d');
@@ -25,9 +25,8 @@
     });
     img.onload = () => {
       var height = self.canvas.height;
-      var scale = (height/img.height).toFixed(2);
-      self.resize(img.width*scale, height);
-      self.ctx.drawImage(img, 0, 0, img.width * scale, height);
+      self.resize(img.width * STYLE.imgscale, img.height * STYLE.imgscale);
+      self.ctx.drawImage(img, 0, 0, img.width * STYLE.imgscale, img.height * STYLE.imgscale);
     };
   };
   Adit.prototype.resize = function(width, height) {
@@ -36,9 +35,8 @@
     canvas.height = height;
   };
   Adit.prototype.adit = function() {
-    var scale = (ADSTYLE.width/adImg.width).toFixed(2);
-    this.ctx.globalAlpha = ADSTYLE.opacity;
-    this.ctx.drawImage(adImg, this.canvas.width - ADSTYLE.width, 0, ADSTYLE.width, adImg.height * scale);
+    this.ctx.globalAlpha = STYLE.opacity;
+    this.ctx.drawImage(adImg, this.canvas.width - adImg.width * STYLE.adscale, 0, adImg.width * STYLE.adscale, adImg.height * STYLE.adscale);
     this.ctx.globalAlpha = 1;
   };
   Adit.prototype.getDataURL = function() {
@@ -53,6 +51,11 @@
       xhr.send(formData);
     }, 'image/png');
   };
+  Adit.prototype.editStyle = function(style) {
+    for(var prop in style) {
+      prop in STYLE && style[prop] && (STYLE[prop] = style[prop]);
+    }
+  }
 
   function getXHR(url, handler) {
     var xhr = new XMLHttpRequest();
